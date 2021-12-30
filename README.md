@@ -1,12 +1,12 @@
 # Snake
 
 open terminal</br>
-type:
-cd Desktop
+type:</br>
+cd Desktop</br>
 git clone https://github.com/nikGrape/Snake.git</br>
-go to the Snake directory
+go to the Snake directory</br>
 double click on install</br>
-close the Snake directory
+close the Snake directory</br>
 double click on snake-game icon on Desktop</br>
 enjoy!</br></br></br>
 
