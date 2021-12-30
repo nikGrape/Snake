@@ -98,7 +98,7 @@ public class UserInterface {
     }
 
     private void setIcons() {
-        final String dir = "/Users/howboutmechickadee/IdeaProjects/Snake/src/game/images/";
+        final String dir = "src/game/images/";
 
         icons.put("grass", new ImageIcon(dir + "grass2.png"));
         icons.put("pig", new ImageIcon(dir + "pig2.png"));
