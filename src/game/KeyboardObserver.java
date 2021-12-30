@@ -79,14 +79,14 @@ public class KeyboardObserver extends Thread {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-                Room.game.boost();
+                Room.GAME.boost();
             }
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-                Room.game.unboost();
+                Room.GAME.unboost();
             }
         }
     }

@@ -5,8 +5,8 @@ public class Pig {
     private int y;
 
     public Pig() {
-        this.x = (int) (Math.random() * Room.game.getWidth());
-        this.y = (int) (Math.random() * Room.game.getHeight());
+        this.x = (int) (Math.random() * Room.GAME.getWidth());
+        this.y = (int) (Math.random() * Room.GAME.getHeight());
     }
 
     public int getX() {

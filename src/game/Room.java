@@ -7,12 +7,15 @@ import java.awt.event.KeyEvent;
  * Основной класс программы.
  */
 public class Room {
+    static Room GAME;
+
     private int width;
     private int height;
     private Snake snake;
     private Pig pig;
     private UserInterface userInterface;
     private boolean booster = false;
+
 
     public Room(int width, int height, Snake snake) {
         this.width = width;
@@ -25,7 +28,7 @@ public class Room {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        game = this;
+        GAME = this;
     }
 
     public Snake getSnake() {
@@ -116,8 +119,8 @@ public class Room {
 
         UserInterface.restart = false;
         snake = new Snake(10, 10, SnakeDirection.DOWN);
-        game.createMouse();
-        game.run();
+        GAME.createMouse();
+        GAME.run();
 
 
     }
@@ -149,27 +152,29 @@ public class Room {
         this.pig = pig;
     }
 
+    // check for the pig will not appear on the snakes body
     private boolean checkSnake(Pig pig) {
         return snake.getSections().stream().anyMatch(el->el.getX()== pig.getX() && el.getY()== pig.getY());
     }
 
 
-    public static Room game;
+
 
     public static void main(String[] args) {
-        game = new Room(20, 20, new Snake(10, 10, SnakeDirection.DOWN));
-        game.createMouse();
-        game.run();
+        GAME = new Room(15, 15, new Snake(10, 10, SnakeDirection.DOWN));
+        GAME.createMouse();
+        GAME.run();
     }
 
-    private int initialDelay = 520;
-    private int delayStep = 20;
 
     /**
      * Программа делает паузу, длинна которой зависит от длинны змеи.
      */
     public void sleep() {
+        int initialDelay = 520;
+        int delayStep = 20;
         int level = snake.getSections().size();
+
         int delay = level > 15 ? 200 : (initialDelay - delayStep * level);
         if (booster) {
             delay = 100;

@@ -72,8 +72,8 @@ public class Snake {
 
 
     private void printBodyOrTurn(SnakeSection oldHead, SnakeSection head) {
-        Map<String, ImageIcon> icons = Room.game.getUserInterface().getIcons();
-        JLabel[][] panels = Room.game.getUserInterface().getPieces();
+        Map<String, ImageIcon> icons = Room.GAME.getUserInterface().getIcons();
+        JLabel[][] panels = Room.GAME.getUserInterface().getPieces();
 
         if (head.getDirection() == oldHead.getDirection()) {
             if (oldHead.getDirection() == SnakeDirection.UP || oldHead.getDirection() == SnakeDirection.DOWN)
@@ -107,8 +107,8 @@ public class Snake {
     }
 
     public void printHeadOrTail(SnakeSection piece, String pName) {
-        Map<String, ImageIcon> icons = Room.game.getUserInterface().getIcons();
-        JLabel[][] panels = Room.game.getUserInterface().getPieces();
+        Map<String, ImageIcon> icons = Room.GAME.getUserInterface().getIcons();
+        JLabel[][] panels = Room.GAME.getUserInterface().getPieces();
 
         if (piece.getDirection() == SnakeDirection.DOWN)
             panels[piece.getY()][piece.getX()].setIcon(icons.get(pName + "-down"));
@@ -122,8 +122,8 @@ public class Snake {
 
 
     private void move(int dx, int dy) {
-        Map<String, ImageIcon> icons = Room.game.getUserInterface().getIcons();
-        JLabel[][] panels = Room.game.getUserInterface().getPieces();
+        Map<String, ImageIcon> icons = Room.GAME.getUserInterface().getIcons();
+        JLabel[][] panels = Room.GAME.getUserInterface().getPieces();
 
 
         // Создаем новую голову - новый "кусочек змеи".
@@ -144,9 +144,9 @@ public class Snake {
 
 
         // Проверяем - не съела ли змея мышь.
-        Pig pig = Room.game.getPig();
+        Pig pig = Room.GAME.getPig();
         if (head.getX() == pig.getX() && head.getY() == pig.getY()) // съела
-            Room.game.eatMouse();                   // Хвост не удаляем, но создаем новую мышь.
+            Room.GAME.eatMouse();                   // Хвост не удаляем, но создаем новую мышь.
         else // просто движется
         {
             SnakeSection tail = sections.remove(sections.size() - 1);   // удалили последний элемент с хвоста
@@ -168,7 +168,7 @@ public class Snake {
      * Метод проверяет - находится ли новая голова в пределах комнаты
      */
     private void checkBorders(SnakeSection head) {
-        if ((head.getX() < 0 || head.getX() >= Room.game.getWidth()) || head.getY() < 0 || head.getY() >= Room.game.getHeight()) {
+        if ((head.getX() < 0 || head.getX() >= Room.GAME.getWidth()) || head.getY() < 0 || head.getY() >= Room.GAME.getHeight()) {
             isAlive = false;
         }
     }

@@ -11,10 +11,22 @@ public class UserInterface {
     private JFrame frame;
     private JLabel[][] pieces;
     private Map<String, ImageIcon> icons = new HashMap<>();
+    private int width, length;
     static volatile boolean restart = false;
 
 
-    private void run(JFrame frame, final int width, final int length) {
+    public UserInterface(int width, int length) {
+        this.width = width;
+        this.length = length;
+        setIcons();
+        pieces = new JLabel[width][length];
+        frame = new JFrame();
+        setFrame(frame,  800,  700);
+        gridLayout();
+    }
+
+
+    private void setFrame(JFrame frame, final int width, final int length) {
         SwingUtilities.invokeLater(() -> {
             frame.setTitle("Snake");
             frame.setBackground(Color.GREEN);
@@ -30,7 +42,7 @@ public class UserInterface {
         JButton restart = new JButton("RESTART");
         JButton stop = new JButton("STOP");
 
-        dialog.setTitle("GAME OVER, SCORE: " + Room.game.getSnake().getSections().size());
+        dialog.setTitle("GAME OVER, SCORE: " + Room.GAME.getSnake().getSections().size());
         dialog.setLayout(new GridLayout(1, 2));
         dialog.setVisible(true);
         dialog.setSize(400, 150);
@@ -41,7 +53,7 @@ public class UserInterface {
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                refrashFrame(20,20);
+                refreshFrame();
                 SwingUtilities.invokeLater(() -> {
                     dialog.dispose();
                     dialog.setVisible(false);
@@ -60,7 +72,7 @@ public class UserInterface {
         });
     }
 
-    private void refrashFrame(int width, int length) {
+    private void refreshFrame() {
         SwingUtilities.invokeLater(() -> {
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < length; j++) {
@@ -70,7 +82,7 @@ public class UserInterface {
         });
     }
 
-    private void gridLayout(int width, int length) {
+    private void gridLayout() {
         SwingUtilities.invokeLater(() -> {
             frame.setLayout(new GridLayout(width, length));
 
@@ -85,20 +97,14 @@ public class UserInterface {
         });
     }
 
-    public UserInterface(int width, int length) {
-        setIcons();
-        pieces = new JLabel[width][length];
-        frame = new JFrame();
-        run(frame, width * 10 + 800, length * 10 + 800);
-        gridLayout(width, length);
-    }
+
 
     public static void setRestart(boolean restart) {
         UserInterface.restart = restart;
     }
 
     private void setIcons() {
-        final String dir = "src/game/images/";
+        final String dir = "src/GAME/images/";
 
         icons.put("grass", new ImageIcon(dir + "grass2.png"));
         icons.put("pig", new ImageIcon(dir + "pig2.png"));
