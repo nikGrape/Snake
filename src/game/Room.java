@@ -118,7 +118,7 @@ public class Room {
 
 
         UserInterface.restart = false;
-        snake = new Snake(10, 10, SnakeDirection.DOWN);
+        snake = new Snake(0, 3, SnakeDirection.DOWN);
         GAME.createMouse();
         GAME.run();
 
@@ -161,7 +161,7 @@ public class Room {
 
 
     public static void main(String[] args) {
-        GAME = new Room(15, 15, new Snake(10, 10, SnakeDirection.DOWN));
+        GAME = new Room(15, 15, new Snake(0, 3, SnakeDirection.DOWN));
         GAME.createMouse();
         GAME.run();
     }

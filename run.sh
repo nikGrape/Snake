@@ -1,0 +1,1 @@
+javac -d out2/Snake $(find src -name "*.java")

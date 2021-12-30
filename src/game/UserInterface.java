@@ -29,6 +29,7 @@ public class UserInterface {
     private void setFrame(JFrame frame, final int width, final int length) {
         SwingUtilities.invokeLater(() -> {
             frame.setTitle("Snake");
+            frame.setResizable(false);
             frame.setBackground(Color.GREEN);
             frame.setSize(width, length);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
