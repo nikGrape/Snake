@@ -4,3 +4,6 @@ all:
 
 play:
 	java -classpath out2/Snake game.Room
+
+compile:
+	sh run.sh
