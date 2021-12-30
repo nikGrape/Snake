@@ -1,3 +1,6 @@
 # Snake
 
-type make in your terminal
+type in terminal:
+git clone https://github.com/nikGrape/Snake.git
+cd Snake
+make
