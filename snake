@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd ~/Desktop/Snake
-make play

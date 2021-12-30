@@ -1,4 +1,7 @@
 #!/bin/bash
 
-cd ~/Desktop/Snake
+cd ~/Desktop/Snake/resources
 make compile
+rm ~/Desktop/snake-game
+cp .snake ~/Desktop/snake-game
+sh make_icon.sh
