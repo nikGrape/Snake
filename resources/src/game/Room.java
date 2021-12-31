@@ -118,6 +118,7 @@ public class Room {
 
 
         UserInterface.restart = false;
+        booster = false;
         snake = new Snake(0, 3, SnakeDirection.DOWN);
         GAME.createMouse();
         GAME.run();

@@ -143,6 +143,7 @@ public class Snake {
         printBodyOrTurn(OldHead, head);
 
 
+        sections.add(0, head);                  // Добавили новую голову
         // Проверяем - не съела ли змея мышь.
         Pig pig = Room.GAME.getPig();
         if (head.getX() == pig.getX() && head.getY() == pig.getY()) // съела
@@ -153,7 +154,6 @@ public class Snake {
             panels[tail.getY()][tail.getX()].setIcon(icons.get("grass"));   // поставили траву
         }
 
-        sections.add(0, head);                  // Добавили новую голову
         printHeadOrTail(head, "head");
 
         // меняем тело на новый хвост
