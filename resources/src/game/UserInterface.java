@@ -65,12 +65,7 @@ public class UserInterface {
             }
         });
 
-        stop.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        stop.addActionListener(e -> System.exit(0));
     }
 
     private void refreshFrame() {
@@ -105,7 +100,10 @@ public class UserInterface {
     }
 
     private void setIcons() {
-        final String dir = "src/GAME/images/";
+        String dir = "src/game/images/";
+        String currentDir = System.getProperty("user.dir");
+        dir = currentDir + "/resources/src/game/images/";
+        System.out.println(dir);
 
         icons.put("grass", new ImageIcon(dir + "grass2.png"));
         icons.put("pig", new ImageIcon(dir + "pig2.png"));
@@ -146,7 +144,7 @@ public class UserInterface {
         return icons;
     }
 
-//    public static void main(String[] args) {
-//        UserInterface userInterface = new UserInterface(20, 20);
-//    }
+    public static void main(String[] args) {
+        UserInterface userInterface = new UserInterface(20, 20);
+    }
 }
